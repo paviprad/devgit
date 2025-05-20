@@ -1,0 +1,17 @@
+---
+- name: apache install
+  hosts: ubuntu
+  become: yes
+  tasks:
+    - name: update apt module
+      apt: 
+        upgrade: yes
+        update_cache: yes
+    - name: install nginx
+      apt:
+        name: nginxcat
+        state: present
+    - name: service start
+      service: 
+        name: nginx
+        state: started
