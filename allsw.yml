@@ -1,0 +1,22 @@
+---
+-name: installing ngnix for both ubuntu and linux
+hosts: all
+tasks:
+  -name: upgrading kernel in ubuntu
+  when: ansible_os_family == "debian"
+  apt:
+    name: nginx
+    state: present
+
+  -name: installing nginx in AL
+  when: ansible_os_family == "amazon"
+  dnf:
+    name: ndinx
+    state: present
+  -name: installling nginx in AL
+  when: ansible_os_family == "SUSE"
+  Zypper:
+    name: nginx
+    state: present
+
+
